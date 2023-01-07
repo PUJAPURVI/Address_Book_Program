@@ -111,8 +111,16 @@ public class AddressBook {
             System.out.println("-------Contact Deleted Successfully-------");
         }
     }
+    /**
+     *
+     * This method is used to show Contact option
+     */
+
     public void contactOptions(AddressBook addressBook) {
-        //Show Menu for user to Select Operation on AddressBook
+        /**
+         *
+         * Show Menu for user to Select Operation on AddressBook
+         */
         int choice;
         do {
             System.out.println("***** ADDRESS BOOK MANAGEMENT *****");
@@ -122,17 +130,24 @@ public class AddressBook {
             choice = addressBook.sc.nextInt();
 
             switch (choice) {
+                /**
+                 *
+                 * case 1-Adding new address book in the AddressBook System
+                 * case 2- Edit address book Details
+                 * case 3- Delete address book Details
+                 * case 4- TO Display the address book details
+                 */
                 case 1:
-                    addressBook.addNewContact();    //Adding New Contact Details
+                    addressBook.addNewContact();
                     break;
                 case 2:
-                    addressBook.editContact();  //Edit Contact Details
+                    addressBook.editContact();
                     break;
                 case 3:
-                    addressBook.deleteContact();    //Delete the Contact Details
+                    addressBook.deleteContact();
                     break;
                 case 4:
-                    addressBook.displayContact();   //Show Contact Details
+                    addressBook.displayContact();
                     break;
                 case 5:
                     System.out.println("Thank You for Using Address Book.");
