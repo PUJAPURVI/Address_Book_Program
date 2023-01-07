@@ -64,6 +64,14 @@ public class AddressBookMain {
                     else
                         displayPeopleByRegion(AddressBook.state);
                     break;
+                case 6:
+                    System.out.println("Enter \n1.Display By City\n2.Display By State");
+                    int countChoice = sc.nextInt();
+                    if(countChoice==1)
+                        countPeopleByRegion(AddressBook.city);
+                    else
+                        countPeopleByRegion(AddressBook.state);
+                    break;
                 default:
                     moreChanges = false;
                     System.out.println("Exiting Address Book Directory !");
@@ -178,5 +186,20 @@ public class AddressBookMain {
         }
         System.out.println("-----------------------------------------");
 
+    }
+    /**
+     * This method used for counting persons by City or State.
+     */
+    public static void countPeopleByRegion(HashMap<String, ArrayList<Contacts>> listToDisplay) {
+
+        System.out.println("Enter the name of the region :");
+        String regionName = sc.next();
+
+        long countPeople = listToDisplay.values().stream()
+                .map(region -> region.stream().filter(person -> person.getState().equals(regionName)
+                        || person.getCity().equals(regionName)))
+                .count();
+
+        System.out.println("Number of People residing in " + regionName + " are: " + countPeople + "\n");
     }
 }
