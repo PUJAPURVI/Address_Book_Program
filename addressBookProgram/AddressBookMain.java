@@ -1,7 +1,10 @@
 package com.addressBookProgram;
+
 import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.Scanner;
+
 /**
  * @author Puja
  */
@@ -45,6 +48,14 @@ public class AddressBookMain {
                 case 3:
                     displayDirectoryContents();
                     break;
+                case 4:
+                    System.out.println("Enter \n1.Search By City\n2.Search By State");
+                    int searChoice = sc.nextInt();
+                    if (searChoice == 1)
+                        searchByCity();
+                    else
+                        searchByState();
+                    break;
                 default:
                     moreChanges = false;
                     System.out.println("Exiting Address Book Directory !");
@@ -55,8 +66,8 @@ public class AddressBookMain {
     }
 
     /**
-     *  This method is used for Adding new address book to by checking
-     *  existing book is available or not
+     * This method is used for Adding new address book to by checking
+     * existing book is available or not
      */
 
     public static void addAddressBook() {
@@ -93,7 +104,45 @@ public class AddressBookMain {
     }
 
     /**
-     * This method used for displaying addressBook name.
+     * This method is used for searching person by his/her city name.
+     */
+    public static void searchByCity() {
+
+        System.out.println("Enter the name of the City where the Person resides : ");
+        String cityName = sc.next();
+        System.out.println("Enter the name of the Person : ");
+        String personName = sc.next();
+
+        for (AddressBook addressBook : addressBookDirectory.values()) {
+            ArrayList<Contacts> contactList = addressBook.getContact();
+            contactList.stream()
+                    .filter(person -> person.getFirstName().equals(personName)
+                            && person.getCity().equals(cityName))
+                    .forEach(person -> System.out.println(person));
+        }
+    }
+
+    /**
+     * This method is used for searching person by his/her state name.
+     */
+    public static void searchByState() {
+
+        System.out.println("Enter the name of the State where the Person resides : ");
+        String stateName = sc.next();
+        System.out.println("Enter the name of the Person : ");
+        String personName = sc.next();
+
+        for (AddressBook addressBook : addressBookDirectory.values()) {
+            ArrayList<Contacts> contactList = ((AddressBook) addressBook).getContact();
+            contactList.stream()
+                    .filter(person -> person.getFirstName().equals(personName)
+                            && person.getState().equals(stateName))
+                    .forEach(person -> System.out.println(person));
+        }
+
+    }
+    /**
+     * This method used for displaying addressBook content.
      */
     static void displayDirectoryContents() {
 
