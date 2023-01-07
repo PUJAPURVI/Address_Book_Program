@@ -1,8 +1,7 @@
 package com.addressBookProgram;
+
 /**
- *
  * @author Puja
- *
  */
 
 
@@ -38,6 +37,7 @@ public class AddressBookMain {
                     addressBook.addNewContact();
                     break;
                 case 2:
+                    addressBook.editContact();
                     break;
                 case 3:
                     break;
@@ -54,5 +54,5 @@ public class AddressBookMain {
         } while (choice != 5);
 
     }
-    }
+}
 
