@@ -86,5 +86,30 @@ public class AddressBook {
             contacts.setEmailID(sc.next());
         }
     }
+    /**
+     *
+     * This method is used to delete the Existing contact details
+     */
+
+    public void deleteContact() {
+        //Get First Name to Edit the Contact
+        System.out.println("Enter First Name : ");
+        String firstName = sc.next();
+
+        //check if the Given User with First Name
+        if (!firstName.equalsIgnoreCase(contacts.getFirstName())) {
+            System.out.println("----The Entered Contact Name is Not Available in Address Book---");
+        } else {
+            contacts.setFirstName(null);
+            contacts.setLastname(null);
+            contacts.setAddress(null);
+            contacts.setZip(null);
+            contacts.setState(null);
+            contacts.setCity(null);
+            contacts.setEmailID(null);
+            contacts.setPhoneNo(null);
+            System.out.println("-------Contact Deleted Successfully-------");
+        }
+    }
 }
 
