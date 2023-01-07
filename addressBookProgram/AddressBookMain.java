@@ -40,6 +40,7 @@ public class AddressBookMain {
                     addressBook.editContact();
                     break;
                 case 3:
+                    addressBook.deleteContact();
                     break;
                 case 4:
                     addressBook.displayContact();
