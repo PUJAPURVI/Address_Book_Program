@@ -56,6 +56,14 @@ public class AddressBookMain {
                     else
                         searchByState();
                     break;
+                case 5:
+                    System.out.println("Enter \n1.Display By City\n2.Display By State");
+                    int displayChoice = sc.nextInt();
+                    if (displayChoice == 1)
+                        displayPeopleByRegion(AddressBook.city);
+                    else
+                        displayPeopleByRegion(AddressBook.state);
+                    break;
                 default:
                     moreChanges = false;
                     System.out.println("Exiting Address Book Directory !");
@@ -141,6 +149,23 @@ public class AddressBookMain {
         }
 
     }
+
+    /**
+     * This method is used for display person by his/her city or state name.
+     */
+
+    public static void displayPeopleByRegion(HashMap<String, ArrayList<Contacts>> listToDisplay) {
+
+        System.out.println("Enter the name of the region :");
+        String regionName = sc.next();
+
+        listToDisplay.values().stream()
+                .map(region -> region.stream()
+                        .filter(person -> person.getState().equals(regionName)
+                                || person.getCity().equals(regionName)))
+                .forEach(person -> person.forEach(personDetails -> System.out.println(personDetails)));
+    }
+
     /**
      * This method used for displaying addressBook content.
      */
