@@ -33,26 +33,36 @@ public class AddressBookMain {
             choice = addressBook.sc.nextInt();
 
             switch (choice) {
+                /**
+                 *
+                 * case 1-Adding new address book in the AddressBook System
+                 * case 2- Edit address book Details
+                 * case 3- Delete address book Details
+                 * case 4- TO Display the address book details
+                 */
                 case 1:
-                    addressBook.addNewContact();
+                    AddressBookRepo.addNewAddressBook();
                     break;
                 case 2:
                     addressBook.editContact();
                     break;
                 case 3:
-                    addressBook.deleteContact();
+                    AddressBookRepo.deleteAddressBook();
                     break;
                 case 4:
-                    addressBook.displayContact();
+                    AddressBookRepo.displayAddressBooks();
                     break;
                 case 5:
+                    AddressBookRepo.selectAddressBook();
+                    break;
+                case 6:
                     System.out.println("Thank You for Using Address Book.");
                     break;
                 default:
-                    System.out.println("Please Select between 1 to 5 only.");
+                    System.out.println("Please Select between 1 to 6 only.");
                     break;
             }
-        } while (choice != 5);
+        } while (choice != 6);
 
     }
 }
